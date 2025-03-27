@@ -133,11 +133,11 @@ namespace AutoDarkModeMin
 
         private void GitHubLInk_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/qiqd/AutoDarkModeMin"));
+            Process.Start(new ProcessStartInfo("https://github.com/qiqd/AutoDarkModeMin") { UseShellExecute = true });
         }
         private void GiteeLink_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://gitee.com/qijiugit/auto-dark-mode"));
+            Process.Start(new ProcessStartInfo("https://gitee.com/qijiugit/auto-dark-mode") { UseShellExecute = true });
         }
         private void ConfirmUpdate_Click(object sender, EventArgs e)
         {

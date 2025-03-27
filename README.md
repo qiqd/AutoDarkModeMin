@@ -27,7 +27,7 @@
 ## 关于
 
 ### 社区链接
-- **GitHub**: [访问 GitHub 仓库](https://github.com/yourusername/AutoDarkMin)
+- **GitHub**: [访问 GitHub 仓库](https://github.com/qiqd/AutoDarkModeMin)
 - **Gitee**: [访问 Gitee 仓库](https://gitee.com/yourusername/AutoDarkMin)
 
 ### 确认保存

@@ -241,6 +241,7 @@
             GiteeLink.Size = new Size(55, 24);
             GiteeLink.TabIndex = 1;
             GiteeLink.Text = "Gitee";
+            GiteeLink.Click += GiteeLink_Click;
             // 
             // pictureBox2
             // 

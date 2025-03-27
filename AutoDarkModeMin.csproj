@@ -16,6 +16,7 @@
     <Description>一个简单易用的Windows深浅色主题自动切换工具。</Description>
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>

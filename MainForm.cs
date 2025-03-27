@@ -1,6 +1,7 @@
 using Microsoft.Win32;
 using Quartz;
 using Quartz.Impl;
+using System.Diagnostics;
 namespace AutoDarkModeMin
 {
     public partial class MainForm : Form
@@ -129,15 +130,15 @@ namespace AutoDarkModeMin
 
             }
         }
-        private void UpdateTime()
-        {
 
-        }
         private void GitHubLInk_Click(object sender, EventArgs e)
         {
-
+            Process.Start(new ProcessStartInfo("https://github.com/qiqd/AutoDarkModeMin"));
         }
-
+        private void GiteeLink_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://gitee.com/qijiugit/auto-dark-mode"));
+        }
         private void ConfirmUpdate_Click(object sender, EventArgs e)
         {
             this.InitializeSchedule();
@@ -200,5 +201,7 @@ namespace AutoDarkModeMin
                 this.Show();
             }
         }
+
+
     }
 }

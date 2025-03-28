@@ -1,0 +1,28 @@
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AutoDarkModeMin
+{
+    internal class SystemThemeHelper
+    {
+        public static bool IsSystemInDarkMode()
+        {
+            using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"))
+            {
+                if (key != null)
+                {
+                    var value = key.GetValue("AppsUseLightTheme");
+                    if (value is int themeValue)
+                    {
+                        return themeValue == 0;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+}

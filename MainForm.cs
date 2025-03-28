@@ -1,10 +1,11 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Media.Media3D;
 namespace AutoDarkModeMin
 {
     public partial class MainForm : Form
     {
-
+        private const int WM_SETTINGCHANGE = 0x001A;
         private bool isSilentMode;
         private readonly TaskSchedule schedule;
 
@@ -99,6 +100,50 @@ namespace AutoDarkModeMin
                 this.Show();
             }
         }
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_SETTINGCHANGE)
+            {
+                if (m.LParam != IntPtr.Zero && Marshal.PtrToStringUni(m.LParam) == "ImmersiveColorSet")
+                {
+                    bool isDarkMode = SystemThemeHelper.IsSystemInDarkMode();
+                    ToggleTheme(isDarkMode);
+                }
+            }
+            base.WndProc(ref m);
+        }
+        public void ToggleTheme(bool isDarkMode)
+        {
+            if (isDarkMode)
+            {
+                ApplyDarkTheme(this);
+            }
+            else
+            {
+                ApplyLightTheme(this);
+            }
+        }
 
+        public void ApplyDarkTheme(Control control)
+        {
+            control.BackColor = Color.FromArgb(45, 45, 48);
+            control.ForeColor = Color.White;
+            foreach (Control child in control.Controls)
+            {
+                ApplyDarkTheme(child);
+            }
+        }
+
+        public void ApplyLightTheme(Control control)
+        {
+            control.BackColor = SystemColors.Window;
+            control.ForeColor = SystemColors.ControlText;
+            foreach (Control child in control.Controls)
+            {
+                ApplyLightTheme(child);
+            }
+        }
     }
+
 }
+

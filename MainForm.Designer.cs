@@ -69,10 +69,12 @@
             // 
             // TimePickerGroup
             // 
+            TimePickerGroup.BackColor = Color.Transparent;
             TimePickerGroup.Controls.Add(panel2);
             TimePickerGroup.Controls.Add(panel1);
             TimePickerGroup.Dock = DockStyle.Top;
             TimePickerGroup.Font = new Font("微软雅黑", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            TimePickerGroup.ForeColor = Color.Black;
             TimePickerGroup.Location = new Point(0, 0);
             TimePickerGroup.Name = "TimePickerGroup";
             TimePickerGroup.Size = new Size(800, 187);
@@ -122,6 +124,11 @@
             // 
             // LightStart
             // 
+            LightStart.CalendarForeColor = Color.Black;
+            LightStart.CalendarMonthBackground = Color.Black;
+            LightStart.CalendarTitleBackColor = Color.Black;
+            LightStart.CalendarTitleForeColor = Color.Black;
+            LightStart.CalendarTrailingForeColor = Color.Black;
             LightStart.CustomFormat = "HH:mm:ss";
             LightStart.Format = DateTimePickerFormat.Time;
             LightStart.Location = new Point(519, 27);
@@ -142,10 +149,12 @@
             // 
             // SettingGroup
             // 
+            SettingGroup.BackColor = Color.Transparent;
             SettingGroup.Controls.Add(panel3);
             SettingGroup.Controls.Add(AutoStart);
             SettingGroup.Dock = DockStyle.Top;
             SettingGroup.Font = new Font("微软雅黑", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            SettingGroup.ForeColor = Color.Black;
             SettingGroup.Location = new Point(0, 187);
             SettingGroup.Name = "SettingGroup";
             SettingGroup.Size = new Size(800, 125);
@@ -178,6 +187,7 @@
             // ForceLight
             // 
             ForceLight.AutoSize = true;
+            ForceLight.BackColor = Color.Transparent;
             ForceLight.Location = new Point(77, 25);
             ForceLight.Name = "ForceLight";
             ForceLight.Size = new Size(103, 28);
@@ -185,27 +195,35 @@
             ForceLight.TabStop = true;
             ForceLight.Tag = "0";
             ForceLight.Text = "强制浅色";
-            ForceLight.UseVisualStyleBackColor = true;
+            ForceLight.UseVisualStyleBackColor = false;
             ForceLight.CheckedChanged += ForceChangeMode;
             // 
             // AutoStart
             // 
             AutoStart.AutoSize = true;
+            AutoStart.BackColor = Color.Transparent;
+            AutoStart.FlatAppearance.BorderColor = Color.Lime;
+            AutoStart.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 255, 192);
+            AutoStart.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 128);
+            AutoStart.ForeColor = Color.Black;
             AutoStart.Location = new Point(96, 50);
             AutoStart.Name = "AutoStart";
             AutoStart.Size = new Size(122, 28);
             AutoStart.TabIndex = 0;
+            AutoStart.Tag = "4";
             AutoStart.Text = "开机自启动";
-            AutoStart.UseVisualStyleBackColor = true;
+            AutoStart.UseVisualStyleBackColor = false;
             AutoStart.CheckedChanged += EnableAutoStart;
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(ConfirmUpdate);
             groupBox1.Controls.Add(AboutGitee);
             groupBox1.Controls.Add(AboutGithub);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("微软雅黑", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            groupBox1.ForeColor = Color.Black;
             groupBox1.Location = new Point(0, 312);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(800, 138);
@@ -215,12 +233,13 @@
             // 
             // ConfirmUpdate
             // 
+            ConfirmUpdate.BackColor = Color.White;
             ConfirmUpdate.Location = new Point(538, 49);
             ConfirmUpdate.Name = "ConfirmUpdate";
             ConfirmUpdate.Size = new Size(122, 37);
             ConfirmUpdate.TabIndex = 1;
             ConfirmUpdate.Text = "确认保存";
-            ConfirmUpdate.UseVisualStyleBackColor = true;
+            ConfirmUpdate.UseVisualStyleBackColor = false;
             ConfirmUpdate.Click += ConfirmUpdate_Click;
             // 
             // AboutGitee
@@ -317,10 +336,12 @@
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(groupBox1);
             Controls.Add(SettingGroup);
             Controls.Add(TimePickerGroup);
+            ForeColor = Color.Black;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainForm";

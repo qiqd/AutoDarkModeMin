@@ -8,6 +8,7 @@ namespace AutoDarkModeMin
     {
         // 创建调度器
         private IScheduler? scheduler;
+        private bool isSilentMode;
         //默认的触发时间
         private DateTime lightStart = new DateTime(2022, 1, 1, 6, 0, 0);
         private DateTime darkStart = new DateTime(2022, 1, 1, 20, 0, 0);
@@ -22,10 +23,11 @@ namespace AutoDarkModeMin
         //系统主题的注册表键
         private const string SystemUsesLightThemeKey = "SystemUsesLightTheme";
 
-        public MainForm()
+        public MainForm(bool isSilentMode)
         {
             InitializeComponent();
             InitializeSchedule();
+            this.isSilentMode = isSilentMode;
 
         }
 
@@ -46,6 +48,15 @@ namespace AutoDarkModeMin
                 ChangeMode(true);
                 return Task.CompletedTask;
             }
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (isSilentMode)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+            }
+
         }
         private async void InitializeSchedule()
         {
@@ -148,12 +159,12 @@ namespace AutoDarkModeMin
         private void ForceChangeMode(object sender, EventArgs e)
         {
             RadioButton? radioButton = sender as RadioButton;
-            ChangeMode(radioButton.Tag.ToString() == "0");
+            ChangeMode(radioButton?.Tag?.ToString() == "0");
         }
         private void EnableAutoStart(object sender, EventArgs e)
         {
             CheckBox? checkBox = sender as CheckBox;
-            MessageBox.Show(checkBox.Checked ? "开机自启已启用" : "开机自启已禁用");
+            //MessageBox.Show(checkBox.Checked ? "开机自启已启用" : "开机自启已禁用");
             using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(RunKeyPath, true))
             {
                 if (key == null)
@@ -163,7 +174,9 @@ namespace AutoDarkModeMin
                 }
                 if (checkBox.Checked)
                 {
-                    key.SetValue(RunKey, Application.ExecutablePath);
+                    // 添加 /silent 参数以标识自启动模式
+                    key.SetValue(RunKey, $"\"{Application.ExecutablePath}\" /silent");
+
                 }
                 else
                 {
@@ -183,6 +196,7 @@ namespace AutoDarkModeMin
         }
         private void MainFormStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.ShowInTaskbar = true;
             this.Show();
         }
 
@@ -198,6 +212,7 @@ namespace AutoDarkModeMin
         {
             if (e.Button == MouseButtons.Left)
             {
+                this.ShowInTaskbar = true;
                 this.Show();
             }
         }

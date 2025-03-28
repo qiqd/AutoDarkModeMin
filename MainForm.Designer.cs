@@ -327,6 +327,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AutoDarkMin";
             FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
             TimePickerGroup.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

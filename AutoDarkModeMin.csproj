@@ -9,7 +9,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <UseWPF>True</UseWPF>
     <AssemblyName>AutoDarkModeMin</AssemblyName>
-    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <NuGetAuditLevel>moderate</NuGetAuditLevel>
     <Authors>Ogricap</Authors>
     <Company />
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\favicon.ico" />
+    <Content Include="Resources\logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,10 +44,6 @@
 
   <ItemGroup>
     <None Update="README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Update="Resources\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

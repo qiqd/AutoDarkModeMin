@@ -29,7 +29,7 @@ DisableProgramGroupPage=yes
 ;PrivilegesRequired=lowest
 OutputDir=D:\Quick access\Desktop
 OutputBaseFilename=AutoDarkModeMinSetup
-SetupIconFile=D:\Quick access\Desktop\code\.net\AutoDarkModeMin\Resources\favicon.ico
+SetupIconFile=D:\Quick access\Desktop\code\.net\AutoDarkModeMin\Resources\logo.ico
 SolidCompression=yes
 WizardStyle=modern
 

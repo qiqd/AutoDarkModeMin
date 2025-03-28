@@ -4,7 +4,7 @@ namespace AutoDarkModeMin
 {
 
 
-    public static class ForceRefreshSysTheme
+    public static class NotifySysChangeTheme
     {
         // SendMessageTimeout函数的声明
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]

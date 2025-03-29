@@ -12,7 +12,7 @@ namespace AutoDarkModeMin
     {
         //默认的触发时间
         internal DateTime lightStart = new DateTime(2022, 1, 1, 6, 0, 0);
-        internal DateTime darkStart = new DateTime(2022, 1, 1, 20, 0, 0);
+        internal DateTime darkStart = new DateTime(2022, 1, 1, 18, 0, 0);
         // 创建调度器
         internal IScheduler? scheduler;
         //设置系统主题的注册表路径

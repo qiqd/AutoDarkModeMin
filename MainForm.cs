@@ -21,7 +21,7 @@ namespace AutoDarkModeMin
 
         private void InitializeTheme()
         {
-            if (DateTime.Now.Hour >= this.schedule.lightStart.Hour && DateTime.Now.Hour < this.schedule.darkStart.Hour)
+            if (DateTime.Now.Hour >= schedule.lightStart.Hour && DateTime.Now.Hour < schedule.darkStart.Hour)
             {
                 RegisterHandle.ChangeMode(true);
                 ApplyLightTheme(this);

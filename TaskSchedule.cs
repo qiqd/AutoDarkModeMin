@@ -26,7 +26,8 @@ namespace AutoDarkModeMin
         public MainForm? mainForm { get; set; }
         public TaskSchedule()
         {
-            this.userPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+            //Environment.SpecialFolder.Programs
+            this.userPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             this.appFolder = Path.Combine(userPath, "AutoDarkMin");
             InitializeSchedule();
         }
@@ -110,7 +111,8 @@ namespace AutoDarkModeMin
                 Directory.CreateDirectory(appFolder);
             }
 
-            File.WriteAllText(appFolder + "setting.json", v);
+            File.WriteAllText(appFolder + "\\setting.json", v);
+
         }
         public void LoadSettings()
         {

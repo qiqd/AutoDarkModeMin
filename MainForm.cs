@@ -16,7 +16,21 @@ namespace AutoDarkModeMin
             this.isSilentMode = isSilentMode;
             this.schedule = new TaskSchedule() { mainForm = this };
             this.AutoStart.Checked = true;
+            InitializeTheme();
+        }
 
+        private void InitializeTheme()
+        {
+            if (DateTime.Now.Hour >= this.schedule.lightStart.Hour && DateTime.Now.Hour < this.schedule.darkStart.Hour)
+            {
+                RegisterHandle.ChangeMode(true);
+                ApplyLightTheme(this);
+            }
+            else
+            {
+                RegisterHandle.ChangeMode(false);
+                ApplyDarkTheme(this);
+            }
         }
 
         //如果是自启动，则隐藏窗口

@@ -3,6 +3,7 @@ using Quartz;
 using Quartz.Impl;
 using System.IO;
 using System.Text.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AutoDarkModeMin
 {
@@ -20,9 +21,13 @@ namespace AutoDarkModeMin
         private const string AppsUseLightThemeKey = "AppsUseLightTheme";
         //系统主题的注册表键
         private const string SystemUsesLightThemeKey = "SystemUsesLightTheme";
+        internal string userPath;
+        internal string appFolder;
         public MainForm? mainForm { get; set; }
         public TaskSchedule()
         {
+            this.userPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+            this.appFolder = Path.Combine(userPath, "AutoDarkMin");
             InitializeSchedule();
         }
         internal async void InitializeSchedule()
@@ -99,13 +104,19 @@ namespace AutoDarkModeMin
         {
             UserInfo userInfo = new UserInfo() { start = lightStart, end = darkStart };
             string v = JsonSerializer.Serialize(userInfo);
-            File.WriteAllText("setting.json", v);
+
+            if (!Directory.Exists(appFolder))
+            {
+                Directory.CreateDirectory(appFolder);
+            }
+
+            File.WriteAllText(appFolder + "setting.json", v);
         }
         public void LoadSettings()
         {
             try
             {
-                UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText("setting.json"));
+                UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText(appFolder + "setting.json"));
                 this.lightStart = userInfo.start ?? new DateTime(2022, 1, 1, 6, 0, 0);
                 this.darkStart = userInfo.end ?? new DateTime(2022, 1, 1, 20, 0, 0);
             }

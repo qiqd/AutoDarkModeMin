@@ -7,7 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <UseWPF>True</UseWPF>
+    <UseWPF>False</UseWPF>
     <AssemblyName>AutoDarkModeMin</AssemblyName>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <NuGetAuditLevel>moderate</NuGetAuditLevel>

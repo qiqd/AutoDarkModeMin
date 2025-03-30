@@ -118,7 +118,7 @@ namespace AutoDarkModeMin
         {
             try
             {
-                UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText(appFolder + "setting.json"));
+                UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText(appFolder + "\\setting.json"));
                 this.lightStart = userInfo.start ?? new DateTime(2022, 1, 1, 6, 0, 0);
                 this.darkStart = userInfo.end ?? new DateTime(2022, 1, 1, 20, 0, 0);
             }

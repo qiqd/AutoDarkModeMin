@@ -234,7 +234,7 @@
             // ConfirmUpdate
             // 
             ConfirmUpdate.BackColor = Color.White;
-            ConfirmUpdate.Location = new Point(538, 49);
+            ConfirmUpdate.Location = new Point(583, 46);
             ConfirmUpdate.Name = "ConfirmUpdate";
             ConfirmUpdate.Size = new Size(122, 37);
             ConfirmUpdate.TabIndex = 1;
@@ -246,7 +246,7 @@
             // 
             AboutGitee.Controls.Add(GiteeLink);
             AboutGitee.Controls.Add(pictureBox2);
-            AboutGitee.Location = new Point(326, 30);
+            AboutGitee.Location = new Point(371, 27);
             AboutGitee.Name = "AboutGitee";
             AboutGitee.Size = new Size(168, 84);
             AboutGitee.TabIndex = 0;
@@ -255,7 +255,7 @@
             // 
             GiteeLink.AutoSize = true;
             GiteeLink.Cursor = Cursors.Hand;
-            GiteeLink.Location = new Point(76, 29);
+            GiteeLink.Location = new Point(83, 29);
             GiteeLink.Name = "GiteeLink";
             GiteeLink.Size = new Size(55, 24);
             GiteeLink.TabIndex = 1;
@@ -265,7 +265,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.gitee;
-            pictureBox2.Location = new Point(24, 19);
+            pictureBox2.Location = new Point(31, 19);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(46, 46);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -276,7 +276,7 @@
             // 
             AboutGithub.Controls.Add(GitHubLInk);
             AboutGithub.Controls.Add(pictureBox1);
-            AboutGithub.Location = new Point(51, 30);
+            AboutGithub.Location = new Point(96, 27);
             AboutGithub.Name = "AboutGithub";
             AboutGithub.Size = new Size(168, 84);
             AboutGithub.TabIndex = 0;
@@ -285,7 +285,7 @@
             // 
             GitHubLInk.AutoSize = true;
             GitHubLInk.Cursor = Cursors.Hand;
-            GitHubLInk.Location = new Point(74, 29);
+            GitHubLInk.Location = new Point(79, 29);
             GitHubLInk.Name = "GitHubLInk";
             GitHubLInk.Size = new Size(72, 24);
             GitHubLInk.TabIndex = 1;
@@ -295,10 +295,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.github;
-            pictureBox1.Location = new Point(22, 19);
+            pictureBox1.Location = new Point(17, 19);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 47);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Size = new Size(46, 46);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 

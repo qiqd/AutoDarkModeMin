@@ -21,6 +21,7 @@ namespace AutoDarkModeMin
 
         private void InitializeTheme()
         {
+            this.schedule.LoadSettings();
             if (DateTime.Now.Hour >= schedule.lightStart.Hour && DateTime.Now.Hour < schedule.darkStart.Hour)
             {
                 RegisterHandle.ChangeMode(true);
@@ -41,7 +42,7 @@ namespace AutoDarkModeMin
                 this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
             }
-            this.schedule.LoadSettings();
+
             this.LightStart.Value = this.schedule.lightStart;
             this.DarkStart.Value = this.schedule.darkStart;
 
@@ -157,6 +158,7 @@ namespace AutoDarkModeMin
                 ApplyLightTheme(child);
             }
         }
+
     }
 
 }

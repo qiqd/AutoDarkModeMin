@@ -124,7 +124,10 @@ namespace AutoDarkModeMin
             }
             catch (Exception e)
             {
-                File.Delete("setting.json");
+                if (File.Exists(appFolder + "\\setting.json"))
+                {
+                    File.Delete("setting.json");
+                }
             }
 
         }

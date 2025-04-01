@@ -1,9 +1,7 @@
 ﻿using Microsoft.Win32;
 using Quartz;
 using Quartz.Impl;
-using System.IO;
 using System.Text.Json;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AutoDarkModeMin
 {

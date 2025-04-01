@@ -1,9 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeMin
 {
@@ -11,7 +6,6 @@ namespace AutoDarkModeMin
     {
         //自启动注册表路径
         private const string RunKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
-
 
         //设置系统主题的注册表路径
         private const string ThemePath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
@@ -21,7 +15,7 @@ namespace AutoDarkModeMin
         private const string AppsUseLightThemeKey = "AppsUseLightTheme";
         //系统主题的注册表键
         private const string SystemUsesLightThemeKey = "SystemUsesLightTheme";
-        internal static void ChangeMode(bool isLight)
+        internal static void ChangeMode(bool isLight, IntPtr handle)
         {
             using RegistryKey? key = Registry.CurrentUser.OpenSubKey(ThemePath, true);
             if (key == null)
@@ -38,7 +32,12 @@ namespace AutoDarkModeMin
             // 设置应用程序主题
             key.SetValue(AppsUseLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
             // 异步刷新系统主题
-            Task.Run(() => NotifySysChangeTheme.RefreshTheme());
+            Task.Run(() =>
+            {
+                NotifySysChangeTheme.RefreshTheme();
+                int transparency = isLight ? 0 : 1; // 窗口深浅色模式，·1·为深色模式，·0·为浅色模式
+                NotifySysChangeTheme.DwmSetWindowAttribute(handle, 20, ref transparency, sizeof(int));
+            });
         }
         internal static void EnableAutoStart(object sender)
         {

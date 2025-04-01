@@ -24,12 +24,12 @@ namespace AutoDarkModeMin
             this.schedule.LoadSettings();
             if (DateTime.Now.Hour >= schedule.lightStart.Hour && DateTime.Now.Hour < schedule.darkStart.Hour)
             {
-                RegisterHandle.ChangeMode(true);
+                RegisterHandle.ChangeMode(true, this.Handle);
                 ApplyLightTheme(this);
             }
             else
             {
-                RegisterHandle.ChangeMode(false);
+                RegisterHandle.ChangeMode(false, this.Handle);
                 ApplyDarkTheme(this);
             }
         }
@@ -75,7 +75,7 @@ namespace AutoDarkModeMin
         private void ForceChangeMode(object sender, EventArgs e)
         {
             RadioButton? radioButton = sender as RadioButton;
-            RegisterHandle.ChangeMode(radioButton?.Tag?.ToString() == "0");
+            RegisterHandle.ChangeMode(radioButton?.Tag?.ToString() == "0", this.Handle);
 
         }
         private void EnableAutoStart(object sender, EventArgs e)

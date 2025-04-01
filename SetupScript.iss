@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AutoDarkModeMin"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.1"
 #define MyAppExeName "AutoDarkModeMin.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
@@ -11,7 +11,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{947A2B95-57A8-4C68-AF74-477A38E9BA2C}
+AppId={{EE9657D8-3BFC-41FD-8B05-CD1EBB879B85}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -29,6 +29,7 @@ WizardStyle=modern
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -37,6 +38,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\AutoDarkModeMin.deps.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\AutoDarkModeMin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\AutoDarkModeMin.dll.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\AutoDarkModeMin.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\Microsoft.Extensions.Logging.Abstractions.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Quick access\Desktop\code\.net\AutoDarkModeMin\bin\Release\net8.0-windows\publish\win-x86\Quartz.dll"; DestDir: "{app}"; Flags: ignoreversion

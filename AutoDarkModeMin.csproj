@@ -9,7 +9,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <UseWPF>False</UseWPF>
     <AssemblyName>AutoDarkModeMin</AssemblyName>
-    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <NuGetAuditLevel>moderate</NuGetAuditLevel>
     <Authors>Ogricap</Authors>
     <Company />
@@ -17,6 +16,26 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PlatformTarget>x86</PlatformTarget>
+    <Version>1.1.0</Version>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+    <Configurations>Debug;Release;ion</Configurations>
+    <Title>auto-dark-mode-min</Title>
+    <PackageProjectUrl>https://gitee.com/qijiugit/auto-dark-mode</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/qijiugit/auto-dark-mode</RepositoryUrl>
+    <PackageTags>dark mode,light mode,auto change</PackageTags>
+    <PackageReleaseNotes>修复了无法按照设定时间自动切换的bug</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ion|AnyCPU'">
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +52,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +67,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

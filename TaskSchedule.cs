@@ -1,7 +1,6 @@
 ﻿using Quartz;
 using Quartz.Impl;
 using System.Text.Json;
-
 namespace AutoDarkModeMin
 {
 

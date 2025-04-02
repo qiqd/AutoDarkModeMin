@@ -29,15 +29,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ion|AnyCPU'">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>

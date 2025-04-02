@@ -15,6 +15,7 @@ namespace AutoDarkModeMin
 
             this.isSilentMode = isSilentMode;
             this.schedule = new TaskSchedule() { mainForm = this };
+            TaskSchedule.mainFormHandle = this.Handle;
             this.AutoStart.Checked = true;
             InitializeTheme();
         }
@@ -22,7 +23,8 @@ namespace AutoDarkModeMin
         private void InitializeTheme()
         {
             this.schedule.LoadSettings();
-            if (DateTime.Now.Hour >= schedule.lightStart.Hour && DateTime.Now.Hour < schedule.darkStart.Hour)
+            this.schedule.InitializeSchedule();
+            if (DateTime.Now.Hour >= TaskSchedule.lightStart.Hour && DateTime.Now.Hour < TaskSchedule.darkStart.Hour)
             {
                 RegisterHandle.ChangeMode(true, this.Handle);
                 ApplyLightTheme(this);
@@ -43,19 +45,19 @@ namespace AutoDarkModeMin
                 this.ShowInTaskbar = false;
             }
 
-            this.LightStart.Value = this.schedule.lightStart;
-            this.DarkStart.Value = this.schedule.darkStart;
+            this.LightStart.Value = TaskSchedule.lightStart;
+            this.DarkStart.Value = TaskSchedule.darkStart;
 
         }
 
         private void LightStart_ValueChanged(object sender, EventArgs e)
         {
-            schedule.lightStart = this.LightStart.Value;
+            TaskSchedule.lightStart = this.LightStart.Value;
         }
 
         private void DarkStart_ValueChanged(object sender, EventArgs e)
         {
-            schedule.darkStart = this.DarkStart.Value;
+            TaskSchedule.darkStart = this.DarkStart.Value;
         }
 
         private void GitHubLInk_Click(object sender, EventArgs e)

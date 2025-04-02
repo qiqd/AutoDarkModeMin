@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using Quartz;
+﻿using Quartz;
 using Quartz.Impl;
 using System.Text.Json;
 
@@ -21,7 +20,8 @@ namespace AutoDarkModeMin
         private const string SystemUsesLightThemeKey = "SystemUsesLightTheme";
         internal string userPath;
         internal string appFolder;
-        public MainForm? mainForm { get; set; }
+        internal MainForm? mainForm { get; set; }
+        internal static IntPtr mainFormHandle { get; set; }
         public TaskSchedule()
         {
             //Environment.SpecialFolder.Programs
@@ -77,28 +77,28 @@ namespace AutoDarkModeMin
             }
 
         }
-        private static void ChangeMode(bool isLight)
-        {
-            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(ThemePath, true))
-            {
-                if (key == null)
-                {
-                    MessageBox.Show("无法打开注册表项");
-                    return;
-                }
-                // 设置系统主题（如果支持）
-                if (key.GetValue(SystemUsesLightThemeKey) != null)
-                {
-                    key.SetValue(SystemUsesLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
-                }
+        //private static void ChangeMode(bool isLight)
+        //{
+        //    using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(ThemePath, true))
+        //    {
+        //        if (key == null)
+        //        {
+        //            MessageBox.Show("无法打开注册表项");
+        //            return;
+        //        }
+        //        // 设置系统主题（如果支持）
+        //        if (key.GetValue(SystemUsesLightThemeKey) != null)
+        //        {
+        //            key.SetValue(SystemUsesLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
+        //        }
 
-                // 设置应用程序主题
-                key.SetValue(AppsUseLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
-                // 异步刷新系统主题
-                Task.Run(() => NotifySysChangeTheme.RefreshTheme());
+        //        // 设置应用程序主题
+        //        key.SetValue(AppsUseLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
+        //        // 异步刷新系统主题
+        //        Task.Run(() => NotifySysChangeTheme.RefreshTheme());
 
-            }
-        }
+        //    }
+        //}
         public void SaveSettings()
         {
             UserInfo userInfo = new UserInfo() { start = lightStart, end = darkStart };
@@ -122,6 +122,7 @@ namespace AutoDarkModeMin
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (File.Exists(appFolder + "\\setting.json"))
                 {
                     File.Delete("setting.json");
@@ -135,7 +136,7 @@ namespace AutoDarkModeMin
             public Task Execute(IJobExecutionContext context)
             {
 
-                ChangeMode(false);
+                RegisterHandle.ChangeMode(false, mainFormHandle);
                 return Task.CompletedTask;
             }
         }
@@ -143,7 +144,7 @@ namespace AutoDarkModeMin
         {
             public Task Execute(IJobExecutionContext context)
             {
-                ChangeMode(true);
+                RegisterHandle.ChangeMode(true, mainFormHandle);
                 return Task.CompletedTask;
             }
         }

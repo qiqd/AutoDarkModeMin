@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -22,9 +23,10 @@ namespace AutoDarkModeMin
 
         private void InitializeTheme()
         {
-            this.schedule.LoadSettings();
-            this.schedule.InitializeSchedule();
-            if (DateTime.Now >= TaskSchedule.lightStart && DateTime.Now < TaskSchedule.darkStart)
+            //this.schedule.LoadSettings();
+            //this.schedule.InitializeSchedule();
+            TimeOnly timeOnly = TimeOnly.FromDateTime(DateTime.Now);
+            if (timeOnly >= TaskSchedule.lightStart && timeOnly < TaskSchedule.darkStart)
             {
                 RegisterHandle.ChangeMode(true, this.Handle);
                 ApplyLightTheme(this);
@@ -45,19 +47,19 @@ namespace AutoDarkModeMin
                 this.ShowInTaskbar = false;
             }
 
-            this.LightStart.Value = TaskSchedule.lightStart;
-            this.DarkStart.Value = TaskSchedule.darkStart;
+            this.LightStart.Value = new DateTime(2022, 1, 1, TaskSchedule.lightStart.Hour, TaskSchedule.lightStart.Minute, 0);
+            this.DarkStart.Value = new DateTime(2022, 1, 1, TaskSchedule.darkStart.Hour, TaskSchedule.darkStart.Minute, 0);
 
         }
 
         private void LightStart_ValueChanged(object sender, EventArgs e)
         {
-            TaskSchedule.lightStart = this.LightStart.Value;
+            TaskSchedule.lightStart = TimeOnly.FromDateTime(this.LightStart.Value);
         }
 
         private void DarkStart_ValueChanged(object sender, EventArgs e)
         {
-            TaskSchedule.darkStart = this.DarkStart.Value;
+            TaskSchedule.darkStart = TimeOnly.FromDateTime(this.DarkStart.Value);
         }
 
         private void GitHubLInk_Click(object sender, EventArgs e)

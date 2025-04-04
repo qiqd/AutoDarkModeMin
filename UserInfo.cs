@@ -1,9 +1,11 @@
-﻿namespace AutoDarkModeMin
+﻿using Quartz;
+
+namespace AutoDarkModeMin
 {
     internal class UserInfo
     {
-        public DateTime? start { get; set; }
-        public DateTime? end { get; set; }
+        public TimeOnly? start { get; set; }
+        public TimeOnly? end { get; set; }
 
     }
 }

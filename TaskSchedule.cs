@@ -7,8 +7,8 @@ namespace AutoDarkModeMin
     internal class TaskSchedule
     {
         //默认的触发时间
-        internal static DateTime lightStart = new DateTime(2022, 1, 1, 6, 0, 0);
-        internal static DateTime darkStart = new DateTime(2022, 1, 1, 18, 0, 0);
+        internal static TimeOnly lightStart = new TimeOnly(6, 0, 0);
+        internal static TimeOnly darkStart = new TimeOnly(20, 0, 0);
         // 创建调度器
         internal IScheduler? scheduler;
         //设置系统主题的注册表路径
@@ -26,6 +26,7 @@ namespace AutoDarkModeMin
             //Environment.SpecialFolder.Programs
             this.userPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             this.appFolder = Path.Combine(userPath, "AutoDarkMin");
+            LoadSettings();
             InitializeSchedule();
         }
         internal async void InitializeSchedule()
@@ -116,12 +117,14 @@ namespace AutoDarkModeMin
             try
             {
                 UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText(appFolder + "\\setting.json"));
-                lightStart = userInfo!.start ?? new DateTime(2022, 1, 1, 6, 0, 0);
-                darkStart = userInfo.end ?? new DateTime(2022, 1, 1, 20, 0, 0);
+                lightStart = userInfo!.start ?? new TimeOnly(6, 0, 0);
+                darkStart = userInfo.end ?? new TimeOnly(20, 0, 0);
+
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(e.Message);
+                //MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (File.Exists(appFolder + "\\setting.json"))
                 {
                     File.Delete("setting.json");

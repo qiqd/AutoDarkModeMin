@@ -1,6 +1,4 @@
-﻿using Quartz;
-
-namespace AutoDarkModeMin
+﻿namespace AutoDarkModeMin
 {
     internal class UserInfo
     {

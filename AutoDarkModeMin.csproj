@@ -16,7 +16,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PlatformTarget>x86</PlatformTarget>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <Configurations>Debug;Release;ion</Configurations>
     <Title>auto-dark-mode-min</Title>

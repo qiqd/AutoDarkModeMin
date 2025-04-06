@@ -6,6 +6,7 @@ namespace AutoDarkModeMin
 
     internal class TaskSchedule
     {
+        internal bool enablePin = false; //是否启用置顶窗口
         //默认的触发时间
         internal static TimeOnly lightStart = new TimeOnly(6, 0, 0);
         internal static TimeOnly darkStart = new TimeOnly(20, 0, 0);
@@ -77,31 +78,9 @@ namespace AutoDarkModeMin
             }
 
         }
-        //private static void ChangeMode(bool isLight)
-        //{
-        //    using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(ThemePath, true))
-        //    {
-        //        if (key == null)
-        //        {
-        //            MessageBox.Show("无法打开注册表项");
-        //            return;
-        //        }
-        //        // 设置系统主题（如果支持）
-        //        if (key.GetValue(SystemUsesLightThemeKey) != null)
-        //        {
-        //            key.SetValue(SystemUsesLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
-        //        }
-
-        //        // 设置应用程序主题
-        //        key.SetValue(AppsUseLightThemeKey, isLight ? 1 : 0, RegistryValueKind.DWord);
-        //        // 异步刷新系统主题
-        //        Task.Run(() => NotifySysChangeTheme.RefreshTheme());
-
-        //    }
-        //}
         public void SaveSettings()
         {
-            UserInfo userInfo = new UserInfo() { start = lightStart, end = darkStart };
+            UserInfo userInfo = new UserInfo() { start = lightStart, end = darkStart, enablePin = enablePin };
             string v = JsonSerializer.Serialize(userInfo);
 
             if (!Directory.Exists(appFolder))
@@ -119,7 +98,7 @@ namespace AutoDarkModeMin
                 UserInfo? userInfo = JsonSerializer.Deserialize<UserInfo>(File.ReadAllText(appFolder + "\\setting.json"));
                 lightStart = userInfo!.start ?? new TimeOnly(6, 0, 0);
                 darkStart = userInfo.end ?? new TimeOnly(20, 0, 0);
-
+                enablePin = userInfo.enablePin;
             }
             catch (Exception e)
             {

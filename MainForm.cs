@@ -1,3 +1,4 @@
+using AutoDarkModeMinNetFrameworkEdtion;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -5,6 +6,7 @@ namespace AutoDarkModeMin
 {
     public partial class MainForm : Form
     {
+        private WindowTopMost? windowTopMost;
         private const int WM_SETTINGCHANGE = 0x001A;
         private bool isSilentMode;
         private readonly TaskSchedule schedule;
@@ -48,7 +50,7 @@ namespace AutoDarkModeMin
 
             this.LightStart.Value = new DateTime(2022, 1, 1, TaskSchedule.lightStart.Hour, TaskSchedule.lightStart.Minute, 0);
             this.DarkStart.Value = new DateTime(2022, 1, 1, TaskSchedule.darkStart.Hour, TaskSchedule.darkStart.Minute, 0);
-
+            this.EnableWindowTopMost.Checked = this.schedule.enablePin;
         }
 
         private void LightStart_ValueChanged(object sender, EventArgs e)
@@ -104,20 +106,16 @@ namespace AutoDarkModeMin
         //右键菜单关闭
         private void CloseStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (this.windowTopMost != null)
+            {
+                windowTopMost.RemoveAllTopWindows();
+                this.windowTopMost = null;
+            }
             this.schedule.scheduler!.Shutdown();
             this.notifyIcon.Dispose();
             Application.Exit();
         }
 
-        //如果是鼠标右键单击，则显示菜单
-        private void NotifyIcon_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.ShowInTaskbar = true;
-                this.Show();
-            }
-        }
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == WM_SETTINGCHANGE)
@@ -161,7 +159,37 @@ namespace AutoDarkModeMin
                 ApplyLightTheme(child);
             }
         }
+        private void EnableWindowTopMost_CheckedChanged(object sender, EventArgs e)
+        {
 
+            this.schedule.enablePin = EnableWindowTopMost.Checked;
+        }
+
+        private void CancelAllTopMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.windowTopMost == null) return;
+            windowTopMost.RemoveAllTopWindows();
+            this.windowTopMost = null;
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.windowTopMost == null)
+            {
+                this.windowTopMost = new WindowTopMost();
+
+            }
+            if (this.EnableWindowTopMost.Checked)
+            {
+                windowTopMost.SetWindowTopMost();
+            }
+
+        }
+
+        private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.notifyIcon.Text = this.windowTopMost == null ? "AutoDarkModeMin" : $"AutoDarkModeMin - 置顶窗口数: {this.windowTopMost.GetTopWindowsCount()}";
+        }
     }
 
 }

@@ -41,6 +41,7 @@
             panel3 = new Panel();
             ForceDark = new RadioButton();
             ForceLight = new RadioButton();
+            EnableWindowTopMost = new CheckBox();
             AutoStart = new CheckBox();
             groupBox1 = new GroupBox();
             ConfirmUpdate = new Button();
@@ -52,8 +53,10 @@
             pictureBox1 = new PictureBox();
             contextMenuStrip = new ContextMenuStrip(components);
             MainFormStripMenuItem = new ToolStripMenuItem();
+            CancelAllTopWindowsMenuItem = new ToolStripMenuItem();
             CloseStripMenuItem = new ToolStripMenuItem();
             notifyIcon = new NotifyIcon(components);
+            toolTip = new ToolTip(components);
             TimePickerGroup.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -151,6 +154,7 @@
             // 
             SettingGroup.BackColor = Color.Transparent;
             SettingGroup.Controls.Add(panel3);
+            SettingGroup.Controls.Add(EnableWindowTopMost);
             SettingGroup.Controls.Add(AutoStart);
             SettingGroup.Dock = DockStyle.Top;
             SettingGroup.Font = new Font("微软雅黑", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 134);
@@ -198,6 +202,24 @@
             ForceLight.UseVisualStyleBackColor = false;
             ForceLight.CheckedChanged += ForceChangeMode;
             // 
+            // EnableWindowTopMost
+            // 
+            EnableWindowTopMost.AutoSize = true;
+            EnableWindowTopMost.BackColor = Color.Transparent;
+            EnableWindowTopMost.FlatAppearance.BorderColor = Color.Lime;
+            EnableWindowTopMost.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 255, 192);
+            EnableWindowTopMost.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 128);
+            EnableWindowTopMost.ForeColor = Color.Black;
+            EnableWindowTopMost.Location = new Point(96, 64);
+            EnableWindowTopMost.Name = "EnableWindowTopMost";
+            EnableWindowTopMost.Size = new Size(140, 28);
+            EnableWindowTopMost.TabIndex = 0;
+            EnableWindowTopMost.Tag = "4";
+            EnableWindowTopMost.Text = "启用窗口置顶";
+            toolTip.SetToolTip(EnableWindowTopMost, "启用该选项允许双击状态栏图标后设置需要置顶的窗口。");
+            EnableWindowTopMost.UseVisualStyleBackColor = false;
+            EnableWindowTopMost.CheckedChanged += EnableWindowTopMost_CheckedChanged;
+            // 
             // AutoStart
             // 
             AutoStart.AutoSize = true;
@@ -206,7 +228,7 @@
             AutoStart.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 255, 192);
             AutoStart.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 128);
             AutoStart.ForeColor = Color.Black;
-            AutoStart.Location = new Point(96, 50);
+            AutoStart.Location = new Point(96, 30);
             AutoStart.Name = "AutoStart";
             AutoStart.Size = new Size(122, 28);
             AutoStart.TabIndex = 0;
@@ -305,21 +327,28 @@
             // contextMenuStrip
             // 
             contextMenuStrip.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { MainFormStripMenuItem, CloseStripMenuItem });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { MainFormStripMenuItem, CancelAllTopWindowsMenuItem, CloseStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new Size(124, 52);
+            contextMenuStrip.Size = new Size(199, 76);
             // 
             // MainFormStripMenuItem
             // 
             MainFormStripMenuItem.Name = "MainFormStripMenuItem";
-            MainFormStripMenuItem.Size = new Size(123, 24);
+            MainFormStripMenuItem.Size = new Size(198, 24);
             MainFormStripMenuItem.Text = "主页面";
             MainFormStripMenuItem.Click += MainFormStripMenuItem_Click;
+            // 
+            // CancelAllTopWindowsMenuItem
+            // 
+            CancelAllTopWindowsMenuItem.Name = "CancelAllTopWindowsMenuItem";
+            CancelAllTopWindowsMenuItem.Size = new Size(198, 24);
+            CancelAllTopWindowsMenuItem.Text = "清除所有置顶窗口";
+            CancelAllTopWindowsMenuItem.Click += CancelAllTopMenuItem_Click;
             // 
             // CloseStripMenuItem
             // 
             CloseStripMenuItem.Name = "CloseStripMenuItem";
-            CloseStripMenuItem.Size = new Size(123, 24);
+            CloseStripMenuItem.Size = new Size(198, 24);
             CloseStripMenuItem.Text = "退出";
             CloseStripMenuItem.Click += CloseStripMenuItem_Click;
             // 
@@ -329,7 +358,13 @@
             notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
             notifyIcon.Text = "AutoDarkModeMin";
             notifyIcon.Visible = true;
-            notifyIcon.MouseUp += NotifyIcon_MouseUp;
+            notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
+            notifyIcon.MouseMove += notifyIcon_MouseMove;
+            // 
+            // toolTip
+            // 
+            toolTip.ToolTipIcon = ToolTipIcon.Info;
+            toolTip.ToolTipTitle = "提示";
             // 
             // MainForm
             // 
@@ -395,5 +430,8 @@
         private ToolStripMenuItem MainFormStripMenuItem;
         private ToolStripMenuItem CloseStripMenuItem;
         private NotifyIcon notifyIcon;
+        private CheckBox EnableWindowTopMost;
+        private ToolTip toolTip;
+        private ToolStripMenuItem CancelAllTopWindowsMenuItem;
     }
 }

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AutoDarkModeMin"
-#define MyAppVersion "1.1.3"
+#define MyAppVersion "1.2.0.1"
 #define MyAppExeName "AutoDarkModeMin.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"

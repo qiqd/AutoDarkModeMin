@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
     internal class SystemThemeHelper
     {

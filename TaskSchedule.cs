@@ -1,7 +1,7 @@
 ﻿using Quartz;
 using Quartz.Impl;
 using System.Text.Json;
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
 
     internal class TaskSchedule

@@ -1,4 +1,4 @@
-﻿namespace AutoDarkModeMin
+﻿namespace MiniAutoDarkMode
 {
     internal class UserInfo
     {

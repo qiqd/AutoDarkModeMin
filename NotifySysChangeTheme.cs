@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
 
     public static class NotifySysChangeTheme

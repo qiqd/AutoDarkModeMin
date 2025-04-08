@@ -2,7 +2,7 @@ using AutoDarkModeMinNetFrameworkEdtion;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
     public partial class MainForm : Form
     {
@@ -65,7 +65,7 @@ namespace AutoDarkModeMin
 
         private void GitHubLInk_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/qiqd/AutoDarkModeMin") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://github.com/qiqd/MiniAutoDarkMode") { UseShellExecute = true });
         }
         private void GiteeLink_Click(object sender, EventArgs e)
         {
@@ -188,7 +188,7 @@ namespace AutoDarkModeMin
 
         private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
         {
-            this.notifyIcon.Text = this.windowTopMost == null ? "AutoDarkModeMin" : $"AutoDarkModeMin - 置顶窗口数: {this.windowTopMost.GetTopWindowsCount()}";
+            this.notifyIcon.Text = this.windowTopMost == null ? "MiniAutoDarkMode" : $"MiniAutoDarkMode - 置顶窗口数: {this.windowTopMost.GetTopWindowsCount()}";
         }
     }
 

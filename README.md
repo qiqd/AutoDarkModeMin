@@ -1,4 +1,6 @@
-# AutoDarkMin 用户指南
+# MiniAutoDarkMode 用户指南
+
+## 该应用需要.net 8运行时支持
 
 ## 时间选择
 
@@ -35,7 +37,7 @@
 ## 关于
 
 ### 社区链接
-- **GitHub**: [访问 GitHub 仓库](https://github.com/qiqd/AutoDarkModeMin)
+- **GitHub**: [访问 GitHub 仓库](https://github.com/qiqd/MiniAutoDarkMode)
 - **Gitee**: [访问 Gitee 仓库](https://gitee.com/qijiugit/auto-dark-mode)
 
 ### 确认保存

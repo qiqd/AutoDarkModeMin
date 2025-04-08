@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
     internal class RegisterHandle
     {
@@ -9,7 +9,7 @@ namespace AutoDarkModeMin
 
         //设置系统主题的注册表路径
         private const string ThemePath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-        private const string RunKey = "AutoDarkModeMin";
+        private const string RunKey = "MiniAutoDarkMode";
 
         //应用程序主题的注册表键
         private const string AppsUseLightThemeKey = "AppsUseLightTheme";

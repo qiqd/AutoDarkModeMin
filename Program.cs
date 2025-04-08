@@ -1,8 +1,8 @@
-namespace AutoDarkModeMin
+namespace MiniAutoDarkMode
 {
     internal static class Program
     {
-        private static Mutex mutex = new Mutex(true, "AutoDarkModeMin");
+        private static Mutex mutex = new Mutex(true, "MiniAutoDarkMode");
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

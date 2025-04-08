@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDarkModeMin", "AutoDarkModeMin.csproj", "{D7C7F3C0-C1AC-4B96-B86D-FB587F70714C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAutoDarkMode", "MiniAutoDarkMode.csproj", "{D7C7F3C0-C1AC-4B96-B86D-FB587F70714C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

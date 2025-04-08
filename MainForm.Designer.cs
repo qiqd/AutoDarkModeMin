@@ -1,4 +1,4 @@
-﻿namespace AutoDarkModeMin
+﻿namespace MiniAutoDarkMode
 {
     partial class MainForm
     {
@@ -356,7 +356,7 @@
             // 
             notifyIcon.ContextMenuStrip = contextMenuStrip;
             notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "AutoDarkModeMin";
+            notifyIcon.Text = "MiniAutoDarkMode";
             notifyIcon.Visible = true;
             notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
             notifyIcon.MouseMove += notifyIcon_MouseMove;
@@ -381,7 +381,7 @@
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AutoDarkMin";
+            Text = "MiniAutoDarkMode";
             FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             TimePickerGroup.ResumeLayout(false);

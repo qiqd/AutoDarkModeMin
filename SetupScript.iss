@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "MiniAutoDarkMode"
-#define MyAppVersion "1.2.0.2"
+#define MyAppVersion "1.2.0.3"
 #define MyAppPublisher "https://gitee.com/qijiugit/auto-dark-mode"
 #define MyAppURL "https://gitee.com/qijiugit/auto-dark-mode"
 #define MyAppExeName "MiniAutoDarkMode.exe"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{57EFEDD5-23CA-459A-A841-3FE166F60AA6}
+AppId={{04A76E17-252B-423E-94CB-E5F65FD3CB03}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -24,12 +24,13 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 ChangesAssociations=yes
-DisableProgramGroupPage=yes
+DefaultGroupName={#MyAppName}
+AllowNoIcons=yes
 LicenseFile=D:\Quick access\Desktop\code\.net\MiniAutoDarkMode\LICENSE.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputDir=D:\Quick access\Desktop
-OutputBaseFilename=MiniAutoDarkMode v1.2.0.2
+OutputBaseFilename=MiniAutoDarkMode v1.2.0.3-setup
 SetupIconFile=D:\Quick access\Desktop\code\.net\MiniAutoDarkMode\Resources\logo.ico
 SolidCompression=yes
 WizardStyle=modern
@@ -59,7 +60,9 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: s
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]

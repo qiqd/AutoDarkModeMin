@@ -39,13 +39,18 @@ namespace MiniAutoDarkMode
             }
         }
 
-        //如果是自启动，则隐藏窗口
+        /// <summary>
+        /// 窗体加载事件,设置窗体不显示在任务栏以及任务切换器页面的显示必须要按照这个顺序，否则会失效。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (isSilentMode)
             {
                 this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
+                base.SetVisibleCore(false);
             }
 
             this.LightStart.Value = new DateTime(2022, 1, 1, TaskSchedule.lightStart.Hour, TaskSchedule.lightStart.Minute, 0);

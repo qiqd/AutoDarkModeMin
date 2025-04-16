@@ -5,7 +5,7 @@ namespace MiniAutoDarkMode
 
     public static class NotifySysChangeTheme
     {
-        [DllImport("dwmapi.dll", PreserveSig = false, CharSet = CharSet.Unicode)]
+        [DllImport("dwmapi.dll", CharSet = CharSet.Unicode)]
         public static extern void DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
         // SendMessageTimeout函数的声明
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]

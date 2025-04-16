@@ -1,8 +1,7 @@
 {
   "profiles": {
     "MiniAutoDarkMode": {
-      "commandName": "Project",
-      "commandLineArgs": "/silent"
+      "commandName": "Project"
     }
   }
 }

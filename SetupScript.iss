@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "MiniAutoDarkMode"
-#define MyAppVersion "1.2.0.3"
+#define MyAppVersion "1.2.0.4"
 #define MyAppPublisher "https://gitee.com/qijiugit/auto-dark-mode"
 #define MyAppURL "https://gitee.com/qijiugit/auto-dark-mode"
 #define MyAppExeName "MiniAutoDarkMode.exe"
@@ -30,7 +30,7 @@ LicenseFile=D:\Quick access\Desktop\code\.net\MiniAutoDarkMode\LICENSE.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputDir=D:\Quick access\Desktop
-OutputBaseFilename=MiniAutoDarkMode v1.2.0.3-setup
+OutputBaseFilename=MiniAutoDarkMode v1.2.0.4-setup
 SetupIconFile=D:\Quick access\Desktop\code\.net\MiniAutoDarkMode\Resources\logo.ico
 SolidCompression=yes
 WizardStyle=modern

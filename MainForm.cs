@@ -5,7 +5,14 @@ using System.Runtime.InteropServices;
 namespace MiniAutoDarkMode
 {
     public partial class MainForm : Form
-    {
+    {  // 定义 DWM_WINDOW_CORNER_PREFERENCE 枚举
+        private enum DWM_WINDOW_CORNER_PREFERENCE
+        {
+            DWMWCP_DEFAULT = 0,      // 默认（系统决定）
+            DWMWCP_DONOTROUND = 1,  // 禁用圆角
+            DWMWCP_ROUND = 2,       // 启用圆角
+            DWMWCP_ROUNDSMALL = 3   // 小圆角
+        }
         private WindowTopMost? windowTopMost;
         private const int WM_SETTINGCHANGE = 0x001A;
         private bool isSilentMode;
@@ -56,6 +63,9 @@ namespace MiniAutoDarkMode
             this.LightStart.Value = new DateTime(2022, 1, 1, TaskSchedule.lightStart.Hour, TaskSchedule.lightStart.Minute, 0);
             this.DarkStart.Value = new DateTime(2022, 1, 1, TaskSchedule.darkStart.Hour, TaskSchedule.darkStart.Minute, 0);
             this.EnableWindowTopMost.Checked = this.schedule.enablePin;
+            const int DWMWA_WINDOW_CORNER_PREFERENCE = 33; // 属性ID
+            int cornerPreference = (int)DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUNDSMALL; // 圆角样式
+            NotifySysChangeTheme.DwmSetWindowAttribute(this.contextMenuStrip.Handle, DWMWA_WINDOW_CORNER_PREFERENCE, ref cornerPreference, sizeof(int));
         }
 
         private void LightStart_ValueChanged(object sender, EventArgs e)

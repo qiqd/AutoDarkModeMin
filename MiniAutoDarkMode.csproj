@@ -16,7 +16,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PlatformTarget>x86</PlatformTarget>
-    <Version>1.2.0.3</Version>
+    <Version>1.2.0.4</Version>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <Configurations>Debug;Release;ion</Configurations>
     <Title>auto-dark-mode-min</Title>
@@ -24,8 +24,8 @@
     <RepositoryUrl>https://gitee.com/qijiugit/auto-dark-mode</RepositoryUrl>
     <PackageTags>dark mode,light mode,auto change</PackageTags>
     <PackageReleaseNotes>修复了无法按照设定时间自动切换的bug</PackageReleaseNotes>
-    <AssemblyVersion>1.2.0.3</AssemblyVersion>
-    <FileVersion>1.2.0.3</FileVersion>
+    <AssemblyVersion>1.2.0.4</AssemblyVersion>
+    <FileVersion>1.2.0.4</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
